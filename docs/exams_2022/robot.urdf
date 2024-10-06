@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<robot name="robot">
+    <link name="base_link">
+        <inertial>
+            <mass value="0" />
+            <inertia ixx = "0" ixy = "0" ixz = "0"
+                iyx = "0" iyy = "0" iyz = "0"
+                izx = "0" izy = "0" izz = "0" />
+        </inertial>
+    </link>
+    <joint name="center_z" type="prismatic">
+        <parent link="base_link"/>
+        <child link="y_control"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="1000.0" lower="-0.1" upper="1.1" velocity="0.2"/>
+    </joint>
+    <link name="y_control">
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx = "0" ixy = "0" ixz = "0"
+                iyx = "0" iyy = "0" iyz = "0"
+                izx = "0" izy = "0" izz = "0" />
+        </inertial>
+    </link>
+    <joint name="center_y" type="prismatic">
+        <parent link="y_control"/>
+        <child link="x_control"/>
+        <axis xyz="0 1 0"/>
+        <limit effort="1000.0" lower="-1.1" upper="1.1" velocity="0.2"/>
+    </joint>
+    <link name="x_control">
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx = "0" ixy = "0" ixz = "0"
+                iyx = "0" iyy = "0" iyz = "0"
+                izx = "0" izy = "0" izz = "0" />
+        </inertial>
+    </link>
+    <joint name="center_x" type="prismatic">
+        <parent link="x_control"/>
+        <child link="roll_control"/>
+        <axis xyz="1 0 0"/>
+        <limit effort="1000.0" lower="-1.1" upper="1" velocity="0.2"/>
+    </joint>
+    <link name="roll_control">
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx = "0" ixy = "0" ixz = "0"
+                iyx = "0" iyy = "0" iyz = "0"
+                izx = "0" izy = "0" izz = "0" />
+        </inertial>
+    </link>
+    <joint name="gripper_roll" type="revolute">
+        <parent link="roll_control"/>
+        <child link="gripper_link"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-31.4" upper="31.4" velocity="3.14" effort="10000"/>
+    </joint>
+    <link name="gripper_link">
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <mass value="1" />
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.1 0.1 0.1"/>  
+            </geometry>
+            <material name="a">
+                <color rgba="0.356 0.361 0.376 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.1 0.1 0.1"/>
+            </geometry>
+        </collision>
+    </link>
+</robot>

@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+
+\section*{RC 2023/24, Exam, theory}
+
+Every problem is worth the same amount of points. Every problem
+should be solved on a separate sheet of paper. Write your name on
+every sheet of paper. You can use a calculator and a ruler. You
+have 60 minutes to solve the problems.
+
+
+\subsection*{Problem 1}
+
+Consider the non-linear dynamical system given by the following
+equations:
+
+\begin{align}
+    \dot{x} & = y - x^3 + 3x^2 \\
+    \dot{y} & = -x - 2y^3 + y
+\end{align}
+
+where \(\dot{x}\) and \(\dot{y}\) represent the time derivatives of \(x\) and \(y\) respectively.
+
+\textbf{Tasks:}
+
+\begin{enumerate}
+    \item \textbf{Find the Fixed Points:} Determine all the fixed points of this system.
+
+    \item \textbf{Linearize the System:} For each fixed point found in part (1), linearize the system around that point by computing the Jacobian matrix at each fixed point.
+          \[
+              J = \begin{pmatrix}
+                  \frac{\partial \dot{x}}{\partial x} & \frac{\partial \dot{x}}{\partial y} \\
+                  \frac{\partial \dot{y}}{\partial x} & \frac{\partial \dot{y}}{\partial y}
+              \end{pmatrix}
+          \]
+\end{enumerate}
+
+\subsection*{Problem 2}
+
+Consider a robot with three joints and three links,
+resembling the one encountered in Lab 13.
+The first and last joints are revolute, while the second
+joint is prismatic. The table below provides some of the
+possible configurations ($\theta_1, l_2, \theta_3$) of the
+robot along with the corresponding positions of the robot's
+end effector:
+
+\begin{tabular}{r|r|r|r|r|r}
+    $\theta_1$ & $l_2$ & $\theta_3$ & $x$ & $y$ & $z$ \\
+    \hline
+    0          & 0     & 0          & 0   & 1   & 0   \\
+    0          & 0.5   & 0          & 0   & 1.5 & 0   \\
+    0          & 0.5   & 90         & 0.5 & 1   & 0   \\
+    90         & 0.5   & 90         & 0   & 1   & 0.5 \\
+    180        & 0.5   & 90         & ?   & ?   & ?   \\
+    180        & 0.5   & 180        & ?   & ?   & ?   \\
+\end{tabular}
+
+We use degrees for the angles and meters for the lengths.
+
+\textbf{Tasks:}
+
+\begin{enumerate}
+    \item \textbf{Missing values:} Find the missing values in the table above (write it on paper).
+    \item \textbf{Forward kinematics:} Compute the forward kinematics of the robot end effector.
+\end{enumerate}
+
+\subsection*{Problem 3}
+Let's assume that we have a pinhole camera with the following parameters:
+
+\begin{itemize}
+    \item Focal length: f = 1
+    \item Principal point: c = (0, 0)
+    \item Image resolution: 640 x 480
+\end{itemize}
+
+The camera, in world frame, is located at the position p = (0, 0, 0) and is oriented in the direction of the z axis.
+
+The camera sees a point at the following pixel coordinates: p = (320, 240). z coordinate of the point in the world frame is z = 5.
+
+\textbf{Tasks:}
+
+\begin{enumerate}
+    \item \textbf{Compute the 3D coordinates:} Compute the 3D coordinates of the point in the world frame.
+    \item \textbf{Move the camera:} What would be the pixel coordinates of the point if the camera was moved to the position p = (0, 0, 1) remaining oriented in the direction of the z axis?
+\end{enumerate}
+
+Assume that the camera is calibrated and that the distortion is negligible.
+
+\end{document}
+
+
