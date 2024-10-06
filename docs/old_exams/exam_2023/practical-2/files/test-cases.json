@@ -1,0 +1,44 @@
+{
+    "test_cases": [
+        {
+            "bridge_x": 0.635,
+            "orientation": [0,0,0]
+        },
+        {
+            "bridge_x": 0.135,
+            "orientation": [0,0,0]
+        },
+        {
+            "bridge_x": -0.135,
+            "orientation": [0,0,0]
+        },
+        {
+            "bridge_x": -0.635,
+            "orientation": [0,0,0]
+        },
+        {
+            "bridge_x": 0.635,
+            "orientation": [0,0,1.57]
+        },
+        {
+            "bridge_x": 0.635,
+            "orientation": [0,0,-1.57]
+        },
+        {
+            "bridge_x": 0.4,
+            "orientation": [0,0,1.19]
+        },
+        {
+            "bridge_x": 0.25,
+            "orientation": [0, 0, 1.3765385158755905]
+        },
+        {
+            "bridge_x": 0.4,
+            "orientation": [0, 0, 1.3765385158755905]
+        },
+        {
+            "bridge_x": 0.35,
+            "orientation": [0, 0, 1.4]
+        }
+    ]
+}
