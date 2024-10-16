@@ -2,7 +2,7 @@ Today's lab consists of two parts: working with a Colab notebook and using the M
 
 # Colab
 
-[lab1-colab](https://colab.research.google.com/github/mim-uw/rc-2024-25/blob/master/docs/lab1-public/lab1-colab-student.ipynb)
+[lab1-colab](https://colab.research.google.com/github/mim-ml-teaching/public-rc-2024-25/blob/refs/heads/main/docs/lab1-public/lab1-colab-student.ipynb)
 
 # MuJoCo
 
