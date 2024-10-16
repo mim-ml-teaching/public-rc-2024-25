@@ -22,35 +22,24 @@ A significant portion of robotics work involves using simulators like MuJoCo. Th
    ```
 
 3. Run the simulator:
-
 - Run the MuJoCo simulator either by running exe or using the command: `python -m mujoco.viewer`
 - You should see a window similar to this: ![MuJoCo Simulator Window](mujoco_1.png)
-
 4. Load the World:
-
 - Drag and drop `world1.xml` into the simulator window. Make sure `4x4_1000-0.png` is in the same directory as `world1.xml`.
 - You should now see the world loaded in the simulator:
 ![MuJoCo World Loaded](mujoco_2.png)
 - Explore the MuJoCo interface. Learn how to move the camera, zoom in and out, and rotate the view.
-
 5. Detect Aruco Codes:
-
 - Take a screenshot of the simulator window.
 - Use OpenCV to detect the Aruco code in the screenshot.
-
 6. Add another Aruco code to the world.
-
 - Create a new Aruco code using a generator like this one: <https://chev.me/arucogen/>
 - Convert the SVG to PNG (ImageMagick does not work for this purpose)
 - Adjust the XML file accordingly.
-
 7. Detect Multiple Aruco Codes:
-
 - Use OpenCV to detect both Aruco codes in the scene.
 - Draw bounding boxes around the detected Aruco codes.
-
 8. Modify the World:
-
 - Change some of the box shapes in the world to other shapes like cylinders or spheres by modifying the geom type in the XML file. Explore the MuJoCo documentation for available geom types.
 
 ## Description
