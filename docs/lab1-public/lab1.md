@@ -32,6 +32,7 @@ A significant portion of robotics work involves using simulators like MuJoCo. Th
 5. Detect Aruco Codes:
 - Take a screenshot of the simulator window.
 - Use OpenCV to detect the Aruco code in the screenshot.
+- *Hint:* you should use `cv2.aruco.DICT_4X4_1000` dictionary
 6. Add another Aruco code to the world.
 - Create a new Aruco code using a generator like this one: <https://chev.me/arucogen/>
 - Convert the SVG to PNG (ImageMagick does not work for this purpose)
