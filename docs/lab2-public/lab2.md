@@ -2,6 +2,8 @@
 
 In this lab session, we will focus on 3D transformations, the pinhole camera model, and the fundamentals of stereo vision. We'll start with introductory exercises on these topics. Then, you'll apply this knowledge to capture a video of a moving car in MuJoCo.
 
+[Here](notes-lab-2.pdf) you can find notes with solutions and hints for the exercises below.
+
 ## 3D Transformations
 
 Do it using pen and paper.
