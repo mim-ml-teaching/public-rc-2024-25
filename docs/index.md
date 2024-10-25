@@ -11,6 +11,18 @@
 
 # Additional materials
 
+## Bonus lecture 1
+
+* FPCV:
+    - [Lenses](https://www.youtube.com/embed/7LX-19v_9ns)
+    - [Depth of Field](https://www.youtube.com/embed/v5OE90eVIXo)
+    - [Lens-Related Issues](https://www.youtube.com/embed/hzOeqCb2Fg4)
+*  [Understanding Cameras and Lenses](https://ciechanow.ski/cameras-and-lenses/)  
+  *(Skip the “Waves” part and continue at “Manipulating Rays”)*
+* [Global Shutter vs Rolling Shutter](https://www.premiumbeat.com/blog/know-the-basics-of-global-shutter-vs-rolling-shutter/)
+* [Aperture, Gain (ISO), Exposure Time Triangle](https://www.cambridgeincolour.com/tutorials/camera-exposure.htm)
+
+
 ## Exams
 
 * [Old exams](old_exams)
