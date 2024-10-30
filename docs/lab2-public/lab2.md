@@ -31,6 +31,8 @@ Do you expect the matrices representing the above transformations to be the same
 
 *Hint:* Sometimes it is easier to describe a transformation using different coordinates (e.g., choosing a different basis). If you have a new coordinate system, then describing the transformation in the original coordinates requires only finding the transformation between your two coordinate systems and composing the appropriate transformations in the correct order.
 
+*Note:* Make sure the directions of the basis vectors satisfy the [right hand rule](https://en.wikipedia.org/wiki/Right-hand_rule).
+
 ### Different representations of transformations
 
 Familirize yourself with the Rodrigues Formula: <https://mathworld.wolfram.com/RodriguesRotationFormula.html>.
