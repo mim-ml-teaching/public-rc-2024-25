@@ -226,6 +226,7 @@ for i in range(10):
     mujoco.mj_forward(model, data)
     renderer.update_scene(data)
     plt.imsave(f"frame_{i:03d}.png", renderer.render())
+    renderer.close()
 ```
 
 After a short inspection you can probably realize that it produces consecutive frames of a video.
