@@ -7,6 +7,8 @@
 
 # Homeworks
 
+* [Homework 1](lab5-public/lab5.md)
+
 # Lectures
 
 [Videos, slides & notes](https://drive.google.com/drive/folders/1qhIWWvIsr6-zJUCOvnYrPaPOntkC3DIQ?usp=drive_link)
