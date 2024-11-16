@@ -1,0 +1,29 @@
+<mujoco model="robot">
+  <option timestep="0.001" gravity="0 0 -9.81"/>
+  <compiler autolimits="true"/>
+  <worldbody>
+    <light name="top" pos="0 0 1"/>
+    <body name="floor" pos="0 0 -0.1">
+      <geom size="5.0 5.0 0.02" rgba="1 1 1 1" type="box"/>
+    </body>
+    <body name="box1" pos="0.3 0 0.5">
+      <joint name="box1-joint" type="free"/>
+      <geom size="0.1 0.1 0.1" rgba="1 0 0 1" type="box"/>
+      <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
+    </body>
+    <body name="griper">
+      <inertial pos="0 0 0" mass="0.001" diaginertia="0.001 0.001 0.001"/>
+      <joint name="center_z" pos="0 0 0" damping="0.5" axis="0 0 1" type="slide" range="-1.1 1.1"/>
+      <joint name="center_y" pos="0 0 0" damping="0.5" axis="0 -1 0" type="slide" range="-1.1 1.1"/>
+      <joint name="center_x" pos="0 0 0" damping="0.5" axis="-1 0 0" type="slide" range="-1.1 1.1"/>
+      <joint name="roll" pos="0 0 0" damping="0.5" axis="0 0 1" type="hinge" range="-360 360"/>
+      <geom size="0.1 0.05 0.01" type="box" rgba="0.356 0.361 0.376 1"/>
+    </body>
+  </worldbody>
+  <actuator>
+    <position name="ac_z" joint="center_z"/>
+    <position name="ac_y" joint="center_y" />
+    <position name="ac_x" joint="center_x" />
+    <position name="ac_r" joint="roll" ctrlrange="-3 3" />
+  </actuator>
+</mujoco>
