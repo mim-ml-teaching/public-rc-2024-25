@@ -1,6 +1,6 @@
 # Updates
 
-Not yet
+* 18-11-2024 - additional info on how to blend images with dynamic programming
 
 ## Submission format
 
@@ -119,3 +119,42 @@ Use RANSAC if its needed (depends on calidration result etc.).
 The previous example displayed a panorama by stitching two images. Do the same but using at least five sequential images.
 
 ![panorama](imgs/panorama.png)
+
+## Additional info
+
+### Finding the best seam
+
+Imagine you have two overlapping photographs that you want to stitch together seamlessly.
+You've already figured out how the images should be aligned.
+Now, the challenge is to find the best "seam" or "sewing line" where you can blend the images together with minimal visible artifacts.
+This is where dynamic programming comes in!
+
+#### The Goal
+
+Our goal is to find a path from the top of the overlapping region to the bottom that minimizes the difference in color between the two images along that path.
+This path will be our "sewing line."
+
+How it Works:
+
+#### Cost Calculation
+
+* Start at the top row (pixels that are either on top of the first image or the second image) of the overlapping region.
+Each pixel in this row can come from either the first image or the second.
+* For each possible pixel pair (one from each image), calculate the cost of choosing that pair.
+This cost represents how different the two pixels are in terms of color.
+* To calculate the cost:
+  * Compute the absolute value of the difference in the RGB (Red, Green, Blue) values of the two pixels
+  * Convert the obtained result to grayscale using OpenCV's weighted formula (approximately: 0.3 *Red + 0.59* Green + 0.11 * Blue).
+  * Square the resulting grayscale value.
+  This emphasises larger colour differences.
+
+#### Dynamic Programming
+
+* Create a table to store the minimum cost to reach each pixel in the overlapping region.
+* Initialization: The first row of the table will contain the already calculated costs (or zeros if the top line is not flat)
+* Iteration: Move down the table row by row.
+For each pixel, consider the three closest pixels in the previous row (the three pixels above the currently considered pixel)
+* Calculate the total cost of reaching the current pixel from each of those three pixels (cost to reach the previous pixel + cost of the current pixel pair).
+* Choose the path with the minimum cost and store that cost in the table.
+* Backtracking: Once you reach the bottom row, trace back through the table from the pixel with the lowest cost to find the path that led to it.
+This path is your optimal sewing line!
