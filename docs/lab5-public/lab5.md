@@ -1,14 +1,15 @@
 # Updates
 
+* 22-11-2024 - clarification for Task 7: submit only one panorama image (e.g., `task_7_stitched.jpg`)
 * 18-11-2024 - additional info on how to blend images with dynamic programming
 
 ## Submission format
 
-**The submission deadline is Nov 25 (Monday), 8:00am 2024.**
+**The submission deadline is Nov 29 (Friday), 23:59 2024.**
 
 You should submit via moodle. You should submit a zip or tgz file containing:
 
-* created panoramas: `task_5_stitched.jpg`, `task_6_stitched.jpg`, `task_7_1.jpg`, `task_7_2.jpg`
+* created panoramas: `task_5_stitched.jpg`, `task_6_stitched.jpg`, `task_7_stitched.jpg`
 * source code (preferably one `stitch.py` file)
 * `README.md` on how to run the code, and what parts of the code correspond to which tasks. Also what version of python is used
 * `requirements.txt`
