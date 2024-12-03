@@ -10,6 +10,7 @@
 # Homeworks
 
 * [Homework 1](lab5-public/lab5.md)
+* [Homework 2](lab7-public/lab7.md)
 
 # Lectures
 

@@ -1,0 +1,38 @@
+<mujoco>
+<body name="gripper_base" pos="0 0 -0.205">
+  <geom type="box" size="0.075 0.0025 0.0025 " pos="0 0 0"/>
+  <geom type="box" size="0.0025 0.075 0.0025 " pos="0 0 0"/>
+  <body name="gripper_right_face" pos="0 -0.075 0">
+    <geom type="box" size="0.0025 0.0025 0.06" pos="0 0 -0.06"/>
+    <geom type="box" size="0.075 0.0025 0.0025" pos="0 0 -0.0767"/>
+    <body name="gripper_right_floor" pos="0 0 -0.12">
+      <joint name="trapdoor right" damping="0.5" axis="0 1 0 " type="slide" range="0 0.075"/>
+      <geom type="box" size="0.0025 0.0425 0.0025" pos="0 -0.0375 0"/>
+    </body>
+  </body>
+  <body name="gripper_front_face" pos="0.075 0 0">
+    <geom type="box" size="0.0025 0.0025 0.06" pos="0 0 -0.06"/>
+    <geom type="box" size="0.0025 0.075 0.0025" pos="0 0 -0.0767"/>
+    <body name="gripper_front_floor" pos="0 0 -0.12">
+      <joint name="trapdoor front" damping="0.5" axis="-1 0 0 " type="slide" range="0 0.075"/>
+      <geom type="box" size="0.0425 0.0025 0.0025" pos="0.0375 0 0"/>
+    </body>
+  </body>
+  <body name="gripper_left_face" pos="0 0.075 0">
+    <geom type="box" size="0.0025 0.0025 0.06" pos="0 0 -0.06"/>
+    <geom type="box" size="0.075 0.0025 0.0025" pos="0 0 -0.0767"/>
+    <body name="gripper_left_floor" pos="0 0 -0.12">
+      <joint name="trapdoor left" damping="0.5" axis="0 -1 0 " type="slide" range="0 0.075"/>
+      <geom type="box" size="0.0025 0.0425 0.0025" pos="0 0.0375 0"/>
+    </body>
+  </body>
+  <body name="gripper_back_face" pos="-0.075 0 0">
+    <geom type="box" size="0.0025 0.0025 0.06" pos="0 0 -0.06"/>
+    <geom type="box" size="0.0025 0.075 0.0025" pos="0 0 -0.0767"/>
+    <body name="gripper_back_floor" pos="0 0 -0.12">
+      <joint name="trapdoor back" damping="0.5" axis="1 0 0" type="slide" range="0 0.075"/>
+      <geom type="box" size="0.0425 0.0025 0.0025" pos="-0.0375 0 0"/>
+    </body>
+  </body>
+</body>
+</mujoco>

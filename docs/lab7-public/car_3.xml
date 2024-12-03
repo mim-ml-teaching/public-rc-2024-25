@@ -1,0 +1,232 @@
+<mujoco>
+  <compiler autolimits="true" meshdir="assets/meshes" texturedir="assets/textures"/>
+
+
+  <asset>
+    <!-- floor -->
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance="0"/>
+
+    <!-- aruco markers -->
+    <texture name="markers_1" type="cube" fileright="marker_0.png" fileup="marker_1.png" fileleft="marker_2.png" filedown="marker_3.png" filefront="marker_4.png" fileback="marker_5.png"/>
+    <material name="cube_markers_1" texture="markers_1" texuniform="true"/>
+
+    <texture name="markers_2" type="cube" fileright="marker_6.png" fileup="marker_7.png" fileleft="marker_8.png" filedown="marker_9.png" filefront="marker_10.png" fileback="marker_11.png"/>
+    <material name="cube_markers_2" texture="markers_2" texuniform="true"/>
+
+    <!-- car -->
+    <mesh name="chassis" scale=".01 .006 .0015" vertex="9   2   0
+                                                          -10  10  10
+                                                           9  -2   0
+                                                           10  3  -10
+                                                           10 -3  -10
+                                                          -8   10 -10
+                                                          -10 -10  10
+                                                          -8  -10 -10
+                                                          -5   0   20"/>
+  </asset>
+
+
+  <!-- default classes -->
+  <default>
+    <joint damping=".03" actuatorfrcrange="-0.5 0.5"/>
+
+    <default class="decor">
+      <site type="box" rgba=".5 1 .5 1"/>
+    </default>
+
+    <!-- car wheels -->
+    <default class="wheel">
+      <geom type="cylinder" size=".03 .01" rgba=".5 .5 1 1"/>
+    </default>
+
+    <!-- dash cam rotate control -->
+    <default class="rotor">
+      <joint type="hinge" axis="0 0 1"/>
+    </default>
+
+    <!-- prismatic joint -->
+    <default class="prismatic">
+      <joint type="slide" axis="0 0 1"/>
+    </default>
+  </default>
+
+
+  <!-- world -->
+  <worldbody>
+    <light name="light1" pos="0 0 2"/>
+    <light name="light2" pos="0 2 2"/>
+    <light name="light3" pos="2 0 2"/>
+
+    <!-- floor -->
+    <geom type="plane" size="3 3 .01" material="grid"/>
+
+    <!-- car -->
+    <body name="car" pos="0 0 .03">
+      <freejoint/>
+
+      <!-- top light (ie tracks car from above) -->
+      <light name="top light" pos="0 0 2" mode="trackcom" diffuse=".4 .4 .4"/>
+
+      <!-- chassis -->
+      <geom name="chassis" type="mesh" mesh="chassis"/>
+
+      <!-- front lights -->
+      <light name="front light" pos=".1 0 .02" dir="2 0 -1" diffuse="1 1 1"/>
+
+      <!-- head camera (ie shows what's in front of the car) -->
+      <!-- prev "camera1" -->
+      <camera name="head camera" pos="-.1 0 .05" fovy="90" euler="180 -80 90"/>
+
+      <!-- front wheel -->
+      <geom name="front wheel" pos=".08 0 -.015" type="sphere" size=".015" condim="1" priority="1"/>
+
+      <!-- back wheels -->
+      <body name="left back wheel" pos="-.07 .06 0" zaxis="0 1 0">
+        <joint name="left motor"/>
+        <!-- turn and forward ctrl -->
+
+        <geom class="wheel"/>
+
+        <!-- spokes -->
+        <site class="decor" size=".006 .025 .012"/>
+        <site class="decor" size=".025 .006 .012"/>
+      </body>
+      <body name="right back wheel" pos="-.07 -.06 0" zaxis="0 1 0">
+        <joint name="right motor"/>
+        <!-- turn and forward ctrl -->
+
+        <geom class="wheel"/>
+
+        <!-- spokes -->
+        <site class="decor" size=".006 .025 .012"/>
+        <site class="decor" size=".025 .006 .012"/>
+      </body>
+
+      <!-- dash cam camera -->
+      <!-- prev "rotational-camera" -->
+      <body name="dash cam" pos="0 0 .03">
+        <camera name="dash cam" pos="0 0 .03" fovy="90" euler="180 -80 90"/>
+
+        <joint class="rotor" name="dash cam"/>
+        <!-- dash cam rotate ctrl -->
+
+        <geom type="box" size="0.01 0.01 0.01" rgba="1 1 1 1"/>
+      </body>
+
+      <!-- gripper -->
+      <!-- vertical mast -->
+      <body name="mast" pos="-.0875 0 0">
+        <geom type="box" size=".0025 .0025 .15" pos="0 0 .15" rgba="1 1 1 1"/>
+
+        <!-- horizontal jib -->
+        <body name="jib" pos="0 0 .3">
+          <joint class="rotor" name="slewing unit" damping=".5"/>
+
+          <geom type="box" size=".175 .0025 .0025" pos=".175 0 0"/>
+
+          <!-- vertical telescopic hoist -->
+          <body name="hoist" pos=".35 0 0">
+            <joint class="prismatic" name="lift" damping=".5" range="0 0.2025"/>
+
+            <geom type="box" size=".0025 .0025 .10375" pos="0 0 -.10375"/>
+
+            <!-- lifting cage -->
+            <include file="lifting_cage.xml"/>
+            <!-- There are four movable beams that can slide in and out to   -->
+            <!-- close the cage from below. The joints that move them are    -->
+            <!-- called trapdoor {front, left, right, back}".                -->
+          </body>
+        </body>
+      </body>
+    </body>
+
+    <!-- ball -->
+    <body name="target-ball" pos="1 2 .03">
+      <inertial pos="0 0 0" mass=".001" diaginertia="1 1 1"/>
+      <freejoint/>
+
+      <geom type="sphere" size=".05" rgba="1 0 0 1" friction="0.6 0.3 10"/>
+    </body>
+
+    <!-- boxes -->
+    <body name="target-box-1" pos="-0.3 -0.3 .03">
+      <freejoint/>
+
+      <geom type="box" material="cube_markers_1" size=".05 .05 .05"/>
+    </body>
+    <!--
+    <body name="target-box-2" pos="-0.7 -0.7 .03">
+      <freejoint/>
+
+      <geom type="box" material="cube_markers_2" size=".05 .05 .05"/>
+    </body>-->
+  </worldbody>
+
+
+  <!-- apply controls to joints -->
+  <tendon>
+    <!-- apply forward ctrl -->
+    <fixed name="forward">
+      <joint joint="left motor" coef=".5"/>
+      <joint joint="right motor" coef=".5"/>
+    </fixed>
+
+    <!-- apply turn ctrl -->
+    <fixed name="turn">
+      <joint joint="left motor" coef="-.5"/>
+      <joint joint="right motor" coef=".5"/>
+    </fixed>
+
+    <!-- apply dash cam rotate ctrl -->
+    <fixed name="dash cam rotate">
+      <joint joint="dash cam" coef=".5"/>
+    </fixed>
+
+    <!-- apply jib rotate ctrl -->
+    <fixed name="jib rotate">
+      <joint joint="slewing unit" coef=".5"/>
+    </fixed>
+
+    <!-- apply lift ctrl -->
+    <fixed name="lift">
+      <joint joint="lift" coef=".5"/>
+    </fixed>
+
+    <!-- apply trapdoor close/open ctrl -->
+    <fixed name="trapdoor close/open">
+      <joint joint="trapdoor front" coef=".5"/>
+      <joint joint="trapdoor left" coef=".5"/>
+      <joint joint="trapdoor right" coef=".5"/>
+      <joint joint="trapdoor back" coef=".5"/>
+    </fixed>
+  </tendon>
+
+
+  <!-- preprocess controls -->
+  <actuator>
+    <!-- TODO: add scale info in distance unit/second -->
+    <motor name="forward" tendon="forward" ctrlrange="-1 1"/>
+
+    <!-- TODO: add scale info in degree/second -->
+    <motor name="turn" tendon="turn" ctrlrange="-1 1"/>
+
+    <!-- scale: u_w == 0.1 is 90 degrees rotation per second -->
+    <motor name="dash cam rotate" tendon="dash cam rotate" ctrlrange="-0.1 0.1" gear="0.942"/>
+
+    <!-- TODO: add scale info in degree/second -->
+    <motor name="jib rotate" tendon="jib rotate" ctrlrange="-.1 .1"/>
+
+    <!-- TODO: add scale info in distance unit/second -->
+    <motor name="lift" tendon="lift" ctrlrange="-1 1"/>
+
+    <motor name="trapdoor close/open" tendon="trapdoor close/open" ctrlrange="-1 1"/>
+  </actuator>
+
+
+  <!-- sensors at control application points -->
+  <sensor>
+    <jointactuatorfrc name="left back wheel force total" joint="left motor"/>
+    <jointactuatorfrc name="right back wheel force total" joint="right motor"/>
+  </sensor>
+</mujoco>
