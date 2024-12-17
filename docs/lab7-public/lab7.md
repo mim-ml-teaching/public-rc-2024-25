@@ -2,9 +2,11 @@
 
 ## Updates
 
+- deadline extension
+
 ## Submission format
 
-### Deadline: December 23, 2024 at 11:59 PM
+### Deadline: December 29, 2024 at 11:59 PM
 
  - Submit your work through Moodle.
  - Submit only `stub.py` file and simple instructions to recreate your virtual environment
