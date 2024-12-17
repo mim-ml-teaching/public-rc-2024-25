@@ -1,0 +1,83 @@
+<mujoco>
+  <compiler autolimits="true"/>
+
+  <option timestep="0.01"/>
+  <asset>
+    <mesh name="chasis" scale=".01 .006 .0015" vertex=" 9   2   0
+              -10  10  10
+               9  -2   0
+               10  3  -10
+               10 -3  -10
+              -8   10 -10
+              -10 -10  10
+              -8  -10 -10
+              -5   0   20"/>
+  </asset>
+
+  <default>
+    <joint damping=".01" actuatorfrcrange="-50 50"/>
+    <default class="wheel">
+      <geom type="cylinder" size=".03 .01" rgba=".5 .5 1 1" mass="1" condim="6"/>
+    </default>
+    <default class="decor">
+      <site type="box" rgba=".5 1 .5 1"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <body name="car" pos="0 0 .03" euler="0 0 90">
+      <freejoint/>
+      <light name="top light" pos="0 0 2" mode="trackcom" diffuse=".4 .4 .4"/>
+      <geom name="chasis" type="mesh" mesh="chasis" mass="500"/>
+      <light name="front light" pos=".1 0 .02" dir="2 0 -1" diffuse="1 1 1"/>
+      <camera name="camera1" pos="-0.1 0 0.05" fovy="90" euler="180 -80 90"/>
+      <body name="front left wheel" pos=".07 .06 0"  euler="-90 0 0">
+        <joint name="left forward"/>
+        <joint name="front left turn" axis="0 1 0"/>
+        <geom class="wheel"/>
+        <site class="decor" size=".006 .025 .012"/>
+        <site class="decor" size=".025 .006 .012"/>
+      </body>
+      <body name="front right wheel" pos=".07 -.06 0" euler="-90 0 0">
+        <joint name="right forward"/>
+        <joint name="front right turn" axis="0 1 0"/>
+        <geom class="wheel"/>
+        <site class="decor" size=".006 .025 .012"/>
+        <site class="decor" size=".025 .006 .012"/>
+      </body>
+      <body name="rear left wheel" pos="-.07 .06 0" euler="-90 0 0">
+        <joint name="rear left"/>
+        <geom class="wheel"/>
+        <site class="decor" size=".006 .025 .012"/>
+        <site class="decor" size=".025 .006 .012"/>
+      </body>
+      <body name="rear right wheel" pos="-.07 -.06 0" euler="-90 0 0">
+        <joint name="rear right"/>
+        <geom class="wheel"/>
+        <site class="decor" size=".006 .025 .012"/>
+        <site class="decor" size=".025 .006 .012"/>
+      </body>
+    </body>
+  </worldbody>
+
+  <tendon>
+    <fixed name="forward">
+      <joint joint="left forward" coef=".5"/>
+      <joint joint="right forward" coef=".5"/>
+    </fixed>
+    <fixed name="turn">
+      <joint joint="front left turn" coef=".5"/>
+      <joint joint="front right turn" coef=".5"/>
+    </fixed>
+  </tendon>
+
+  <actuator>
+    <motor name="forward" tendon="forward" ctrlrange="-100 100"/>
+    <motor name="turn" tendon="turn" ctrlrange="-5 5"/>
+  </actuator>
+
+  <sensor>
+    <jointactuatorfrc name="right forward" joint="right forward"/>
+    <jointactuatorfrc name="left forward" joint="left forward"/>
+  </sensor>
+</mujoco>

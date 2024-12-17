@@ -8,11 +8,13 @@
 * [lab8](lab8-public/lab8.md)
 * [lab9](lab9-public/lab9.md)
 * [lab10](lab11-public/lab11.md)
+* [lab11](lab12-public/README.md)
 
 # Homeworks
 
 * [Homework 1](lab5-public/lab5.md)
 * [Homework 2](lab7-public/lab7.md)
+* [Homework 3](pid-control-public/README.md)
 
 # Lectures
 

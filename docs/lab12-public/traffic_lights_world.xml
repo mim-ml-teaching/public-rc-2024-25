@@ -1,0 +1,32 @@
+<mujoco>
+  <compiler assetdir="assets"/>
+
+  <include file="car.xml"/>
+
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
+
+    <mesh name="traffic_light" scale="0.15 0.15 0.15" file="traffic_light.obj" />
+    <mesh name="traffic_light_gate" file="traffic_light_gate.obj" />
+
+    <texture name="traffic_light" type="2d" file="traffic_light.png"/>
+    <material name="traffic_light" texture="traffic_light" />
+
+    <texture name="asphalt" type="2d" file="asphalt.png"/> <!-- https://opengameart.org/content/asphalt -->
+    <material name="road" shininess="0.001" texrepeat="1 1" texuniform="true"  texture="asphalt"  />
+  </asset>
+
+  <worldbody>
+    <light name="light1" pos="0 0 2" dir="0 0 -2" directional="true"/>
+
+    <body name="traffic_light_gate" pos="0 5 0.2" euler="1 0 0">
+      <geom type="mesh" mesh="traffic_light_gate" material="road" mass="1" priority="0" contype="0" conaffinity="0"  />
+      <geom type="mesh" mesh="traffic_light" material="traffic_light" pos="0 0 0.47" mass="1" priority="0" contype="0" conaffinity="0"  />
+    </body>
+
+    <geom type="plane" size="50 50 .01" material="grid" euler="3 0 0"/>
+    <geom type="plane" pos="0 0 0.001" size="0.5 6 .01" material="road" priority="0" contype="0" conaffinity="0" euler="3 0 0"/>
+  </worldbody>
+
+</mujoco>
