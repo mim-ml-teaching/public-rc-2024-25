@@ -37,4 +37,4 @@
 
 ## Exams
 
-* [Old exams](old_exams)
+* [Old exams](old-exams)
