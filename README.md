@@ -1,3 +1,14 @@
-# public-rc-2024-25
-This repository contains lab scenarios and homeworks used for the course Robot Control 2024/25 at MIM UW.
+# iii
+The greatest invention since circle
 
+## How to run:
+
+### Dependencies Installation
+```
+pip install -r requirements.txt
+```
+
+### App Running
+```
+python3 app.py
+```
