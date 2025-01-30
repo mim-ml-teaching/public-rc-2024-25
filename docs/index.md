@@ -38,3 +38,4 @@
 ## Exams
 
 * [Old exams](old-exams)
+* Solutions can be found on GitHub repository connected to this website in the `old-exams-solutions` directory
