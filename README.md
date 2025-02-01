@@ -3,3 +3,10 @@ This repository contains lab scenarios and homeworks used for the course Robot C
 
 ## Adding solutions
 Add solutions via feature branches and pull requests.
+
+## Init `.venv`
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
