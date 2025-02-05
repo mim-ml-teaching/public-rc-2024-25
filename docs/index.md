@@ -1,3 +1,8 @@
+# Exam 1st term
+
+* [practice task 1](exam-2024-25/practical-1)
+* [practice task 2](exam-2024-25/practical-2)
+
 # Labs
 
 * [lab1](lab1-public/lab1.md)
