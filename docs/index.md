@@ -3,6 +3,10 @@
 * [practice task 1](exam-2024-25/practical-1)
 * [practice task 2](exam-2024-25/practical-2)
 
+# Exam 2nd term
+
+* [practice task](exam-2024-25-retake/practical/)
+
 # Labs
 
 * [lab1](lab1-public/lab1.md)
