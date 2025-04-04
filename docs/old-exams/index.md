@@ -23,3 +23,10 @@ The best method for using this repository is to clone it to your local machine a
 - [First term practice_1](exam-2023-24-1/practice-1/README.md)
 - [First term practice_2](exam-2023-24-1/practice-2/README.md)
 - [Second term practice_1](exam-2023-24-2/practice-1/README.md)
+
+## 2024/2025
+
+- [First term theory](exam-2024-25/theory.pdf)
+- [First term practice](exam-2024-25/README.md)
+- [Second term theory](exam-2024-25-retake/theory.pdf)
+- [Second term practice](exam-2024-25-retake/practical)
